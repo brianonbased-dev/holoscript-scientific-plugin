@@ -1,35 +1,82 @@
 {
-  "name": "holoscript-scientific-plugin",
-  "version": "0.1.0",
-  "description": "Multi-agent orchestration for VR-based drug discovery using Narupa integration",
+  "name": "@holoscript/narupa-plugin",
+  "version": "1.0.0",
+  "description": "Multi-agent orchestration for VR-based drug discovery using Narupa integration with HoloScript",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "bin": {
+    "holoscript-narupa": "dist/cli.js"
+  },
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "rm -rf dist"
+    "test": "jest --config jest.config.js",
+    "test:integration": "jest --config jest.config.js --testPathPattern=integration",
+    "test:coverage": "jest --coverage",
+    "clean": "rimraf dist",
+    "prepublishOnly": "npm run clean && npm run build",
+    "lint": "eslint src/**/*.ts",
+    "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\"",
+    "docs": "typedoc --out docs src",
+    "prepack": "npm run build"
   },
   "keywords": [
     "holoscript",
     "narupa",
     "molecular-dynamics",
     "vr",
+    "ar",
     "drug-discovery",
-    "scientific-computing"
+    "scientific-computing",
+    "spatial-computing",
+    "multi-agent",
+    "orchestration",
+    "protein-folding",
+    "computational-chemistry"
   ],
-  "author": "",
+  "author": "HoloScript Contributors",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/brianonbased-dev/holoscript-scientific-plugin"
+    "url": "https://github.com/holoscript/holoscript-scientific-plugin"
   },
+  "bugs": {
+    "url": "https://github.com/holoscript/holoscript-scientific-plugin/issues"
+  },
+  "homepage": "https://github.com/holoscript/holoscript-scientific-plugin#readme",
+  "files": [
+    "dist",
+    "python",
+    "examples",
+    "docs",
+    "README.md",
+    "LICENSE"
+  ],
   "devDependencies": {
+    "@types/jest": "^29.5.11",
     "@types/node": "^20.11.5",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
+    "eslint": "^8.56.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.2.4",
+    "rimraf": "^5.0.5",
+    "ts-jest": "^29.1.1",
+    "typedoc": "^0.25.7",
     "typescript": "^5.3.3"
   },
   "dependencies": {},
+  "peerDependencies": {
+    "holoscript": "^3.1.0"
+  },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "python": {
+    "requirements": [
+      "nanover-server>=0.1.0",
+      "openmm>=7.7.0"
+    ]
   }
 }

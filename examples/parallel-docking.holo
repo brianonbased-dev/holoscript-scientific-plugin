@@ -1,0 +1,58 @@
+// Parallel Docking Simulation Example
+// Run multiple ligand docking simulations simultaneously
+
+object "Protein Target" @narupa_integration {
+  source: "receptor.pdb",
+  server_port: 38801,
+  position: [0, 1.5, -3]
+}
+
+// Run 4 parallel docking simulations
+object "Docking Sim 1" @molecular_dynamics {
+  protein: "receptor.pdb",
+  ligand: "compound_A.mol",
+  md_engine: "openmm",
+  temperature: 300,
+  timestep: 2,
+  steps: 100000,
+  server_port: 38802,
+  position: [-2, 1.5, -3]
+}
+
+object "Docking Sim 2" @molecular_dynamics {
+  protein: "receptor.pdb",
+  ligand: "compound_B.mol",
+  md_engine: "openmm",
+  temperature: 300,
+  timestep: 2,
+  steps: 100000,
+  server_port: 38803,
+  position: [2, 1.5, -3]
+}
+
+object "Docking Sim 3" @molecular_dynamics {
+  protein: "receptor.pdb",
+  ligand: "compound_C.mol",
+  md_engine: "openmm",
+  temperature: 300,
+  timestep: 2,
+  steps: 100000,
+  server_port: 38804,
+  position: [-2, 0.5, -3]
+}
+
+object "Docking Sim 4" @molecular_dynamics {
+  protein: "receptor.pdb",
+  ligand: "compound_D.mol",
+  md_engine: "openmm",
+  temperature: 300,
+  timestep: 2,
+  steps: 100000,
+  server_port: 38805,
+  position: [2, 0.5, -3]
+}
+
+object "Results Display" @ui_panel {
+  position: [0, 2.5, -2],
+  content: "Docking Progress:\nSim 1: 0%\nSim 2: 0%\nSim 3: 0%\nSim 4: 0%"
+}

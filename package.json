@@ -1,0 +1,35 @@
+{
+  "name": "holoscript-scientific-plugin",
+  "version": "0.1.0",
+  "description": "Multi-agent orchestration for VR-based drug discovery using Narupa integration",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "holoscript",
+    "narupa",
+    "molecular-dynamics",
+    "vr",
+    "drug-discovery",
+    "scientific-computing"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brianonbased-dev/holoscript-scientific-plugin"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.5",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

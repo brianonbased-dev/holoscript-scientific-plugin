@@ -1,0 +1,18 @@
+// Simple Narupa Integration Example
+// Load and visualize a single protein structure in VR
+
+object "Protein Viewer" @narupa_integration {
+  source: "1ABC.pdb",
+  server_port: 38801,
+  position: [0, 1.5, -2]
+}
+
+object "VR Camera" @vr_camera {
+  position: [0, 1.7, 0],
+  rotation: [0, 0, 0]
+}
+
+object "UI Panel" @ui_panel {
+  position: [1, 1.5, -1],
+  content: "Protein: 1ABC\nAtoms: Loading...\nStatus: Connecting..."
+}

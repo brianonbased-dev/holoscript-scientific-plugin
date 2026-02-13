@@ -1,0 +1,42 @@
+// Human-in-the-Loop (HITL) Docking Example
+// Interactive VR-guided molecular docking
+
+object "Target Protein" @narupa_integration @interactive_forces {
+  source: "target_protein.pdb",
+  server_port: 38801,
+  position: [0, 1.5, -2],
+
+  // Enable VR controller force feedback
+  force_enabled: true,
+  force_scale: 1.0
+}
+
+object "Drug Ligand" @molecular_dynamics @grabbable {
+  protein: "target_protein.pdb",
+  ligand: "drug_candidate.mol",
+  md_engine: "openmm",
+  temperature: 300,
+  timestep: 2,
+
+  // Allow user to manipulate ligand position
+  user_controlled: true,
+  position: [0.5, 1.5, -1.5]
+}
+
+object "Binding Site Highlight" @glowing @translucent {
+  geometry: "sphere",
+  position: [0.2, 1.6, -2.1],
+  scale: [0.3, 0.3, 0.3],
+  color: "#00ff00",
+  opacity: 0.3
+}
+
+object "Force Feedback Display" @ui_panel {
+  position: [-1.5, 2, -1.5],
+  content: "Binding Energy: 0 kcal/mol\nForce: 0 pN\nDistance: 0 Å"
+}
+
+object "Control Panel" @ui_panel @interactive {
+  position: [1.5, 1.5, -1],
+  content: "Temperature: 300K\nTimestep: 2fs\nMode: Interactive"
+}
